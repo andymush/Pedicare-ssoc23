@@ -2,5 +2,5 @@
     session_start();
     session_unset();
     session_destroy();
-    header("Location: ../Landing.html");
+    header("Location: sign.php");
 ?>

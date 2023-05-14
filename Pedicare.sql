@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 13, 2023 at 07:35 PM
+-- Generation Time: May 14, 2023 at 02:48 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Ailments`
+-- Table structure for table `ailments`
 --
 
-CREATE TABLE `Ailments` (
+CREATE TABLE `ailments` (
   `id` int(11) NOT NULL,
   `ailment` varchar(255) NOT NULL,
   `symptoms` varchar(255) NOT NULL,
@@ -39,10 +39,10 @@ CREATE TABLE `Ailments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Appointments`
+-- Table structure for table `appointments`
 --
 
-CREATE TABLE `Appointments` (
+CREATE TABLE `appointments` (
   `id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
   `doctor_id` int(11) NOT NULL,
@@ -54,26 +54,27 @@ CREATE TABLE `Appointments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Doctors`
+-- Table structure for table `doctors`
 --
 
-CREATE TABLE `Doctors` (
+CREATE TABLE `doctors` (
   `id` int(11) NOT NULL,
-  `Name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `phone` int(20) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `department` varchar(255) NOT NULL
+  `department` varchar(255) NOT NULL,
+  `certificates` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Patients`
+-- Table structure for table `patients`
 --
 
-CREATE TABLE `Patients` (
+CREATE TABLE `patients` (
   `id` int(11) NOT NULL,
-  `Name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `Infant_name` varchar(255) NOT NULL,
@@ -84,12 +85,12 @@ CREATE TABLE `Patients` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Treatments`
+-- Table structure for table `treatments`
 --
 
-CREATE TABLE `Treatments` (
+CREATE TABLE `treatments` (
   `id` int(11) NOT NULL,
-  `Name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `patient_id` int(11) NOT NULL,
   `doctor_id` int(11) NOT NULL,
   `diagnosis` longtext NOT NULL,
@@ -106,7 +107,7 @@ CREATE TABLE `Treatments` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `Name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -114,10 +115,10 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Vaccinations`
+-- Table structure for table `vaccinations`
 --
 
-CREATE TABLE `Vaccinations` (
+CREATE TABLE `vaccinations` (
   `id` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `infant_age` varchar(255) NOT NULL,
@@ -130,27 +131,27 @@ CREATE TABLE `Vaccinations` (
 --
 
 --
--- Indexes for table `Ailments`
+-- Indexes for table `ailments`
 --
-ALTER TABLE `Ailments`
+ALTER TABLE `ailments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Appointments`
+-- Indexes for table `appointments`
 --
-ALTER TABLE `Appointments`
+ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Doctors`
+-- Indexes for table `doctors`
 --
-ALTER TABLE `Doctors`
+ALTER TABLE `doctors`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Patients`
+-- Indexes for table `patients`
 --
-ALTER TABLE `Patients`
+ALTER TABLE `patients`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `userid` (`userid`);
 
@@ -161,9 +162,9 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Vaccinations`
+-- Indexes for table `vaccinations`
 --
-ALTER TABLE `Vaccinations`
+ALTER TABLE `vaccinations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -171,27 +172,27 @@ ALTER TABLE `Vaccinations`
 --
 
 --
--- AUTO_INCREMENT for table `Ailments`
+-- AUTO_INCREMENT for table `ailments`
 --
-ALTER TABLE `Ailments`
+ALTER TABLE `ailments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Appointments`
+-- AUTO_INCREMENT for table `appointments`
 --
-ALTER TABLE `Appointments`
+ALTER TABLE `appointments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Doctors`
+-- AUTO_INCREMENT for table `doctors`
 --
-ALTER TABLE `Doctors`
+ALTER TABLE `doctors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Patients`
+-- AUTO_INCREMENT for table `patients`
 --
-ALTER TABLE `Patients`
+ALTER TABLE `patients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -201,9 +202,9 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Vaccinations`
+-- AUTO_INCREMENT for table `vaccinations`
 --
-ALTER TABLE `Vaccinations`
+ALTER TABLE `vaccinations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -211,9 +212,9 @@ ALTER TABLE `Vaccinations`
 --
 
 --
--- Constraints for table `Patients`
+-- Constraints for table `patients`
 --
-ALTER TABLE `Patients`
+ALTER TABLE `patients`
   ADD CONSTRAINT `userid` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

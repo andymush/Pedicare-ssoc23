@@ -43,7 +43,7 @@
   
     if ($userdata) {        
         //echo "Success";
-        header('refresh:0;url=Dashboard/dashboard.html');
+        header('refresh:0;url=doctors.index.html');
     }else{
         echo "failed!";
         header('refresh:2;url=sign.php');

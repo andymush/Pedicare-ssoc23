@@ -14,7 +14,7 @@
 
         if ($row['name'] === $username && $row['password'] === $password) {
             $_SESSION["name"] = $username;
-            header("location:Dashboard/dashboard.html");
+            header("location:doctors/index.html");
         } 
         else{
             echo "Incorrect username or password";
